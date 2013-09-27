@@ -1,12 +1,12 @@
-# &lt;pocket-button&gt;
+# &lt;dropbox-button&gt;
 
-Web Component wrapper for Pocket Button using Polymer
+Web Component wrapper for dropbox Button using Polymer
 
 > Maintained by [kashiro](https://github.com/kashiro).
 
 ## Demo
 
-> [Check it live](http://kashiro.github.io/pocket-button/index.html).
+> [Check it live](http://kashiro.github.io/dropbox-button/index.html).
 
 ## Dependency
 
@@ -29,25 +29,20 @@ Depend on Polymer's [Browser Compatibility](http://www.polymer-project.org/compa
 2. Import Custom Element:
 
 	```html
-	<link rel="import" href="src/pocket-button.html">
+	<link rel="import" href="src/dropbox-button.html">
 	```
 
 3. Start using it!
 
 	```html
-	<pocket-button></pocket-button>
+	<dropbox-button></dropbox-button>
 	```
 
 ## Options
 
-Attribute  | Options                         | Default             | Description
----        | ---                             | ---                 | ---
-`count`    | `none`, `horizontal`, `vertical`| `none`              |
-`lang`     | `en` 	                     | `en`                |
-`save-url` | *String*                        | `undefined`         | url to save
-`align`    | `right`, `left`                 | `left`              | how the button will align inside of the button's iframe
+coming soon!
 
-more option [here](http://getpocket.com/publisher/button_docs)
+more option [here](https://www.dropbox.com/developers/dropins)
 
 
 ## Contributing

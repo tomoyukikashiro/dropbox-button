@@ -20,6 +20,10 @@
   window.addEventListener('WebComponentsReady', function(e){
     var chooser = document.querySelector('dropbox-button[buttonType=chooser]'),
         saver = document.querySelector('dropbox-button[buttonType=saver]');
+
+    saver.cancel = function(){
+      console.log('cancel');
+    }
   });
   </script>
 </body>

@@ -77,14 +77,10 @@
       buttonType: 'choooser',
       href: '',
       fileName: '',
-      addEvent: function(type, cb, cap){
-        var el = this.$.dropboxBtn;
-
-        if(!type){
-          return;
-        }
-        el.impl.addEventListener(type, cb, cap);
-      },
+      success: function(){},
+      cancel: function(){},
+      progress: function(){},
+      error: function(){},
       created: function(){
         this.onCreated();
       },
@@ -100,14 +96,17 @@
             linkType: this.linkType,
             multiselect: this.multiselect,
             extensions: this.extensions,
-            success: function(files){"Here's the file link:" + files[0].link},
-            cancel: function(e){console.log('cancel');}
+            success: this.success,
+            cancel: this.cancel
           };
         }else{
+          debugger;
           opt = {
             files: [{url: this.href, filename: this.fileName}],
-            success: function(files){console.log('success');},
-            cancel: function(e){console.log('cancel');}
+            success: this.success,
+            cancel: this.cancel,
+            progress: this.progress,
+            error: this.error
           };
         }
         this.opt = opt;

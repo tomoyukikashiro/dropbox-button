@@ -14,6 +14,13 @@
 
   <!-- Using Custom Elements -->
   <dropbox-button buttonType="chooser" appKey="g5rc1yl1way6vxr"></dropbox-button>
+  <dropbox-button buttonType="saver" appKey="g5rc1yl1way6vxr" href="http://kashiro.github.io/dropbox-button/img/test.png" fileName="testtest.png"></dropbox-button>
 
+  <script>
+  window.addEventListener('WebComponentsReady', function(e){
+    var chooser = document.querySelector('dropbox-button[buttonType=chooser]'),
+        saver = document.querySelector('dropbox-button[buttonType=saver]');
+  });
+  </script>
 </body>
 </html>

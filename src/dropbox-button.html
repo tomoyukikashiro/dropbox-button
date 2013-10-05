@@ -1,8 +1,16 @@
-<polymer-element name="dropbox-button" on-click="onClick" attributes="appKey success cancel buttonType linkType multiselect extensions">
+<polymer-element name="dropbox-button" on-click="onClick" attributes="appKey fileName href buttonType linkType multiselect extensions">
 
-  <!-- <template if="{{buttonType}} === 'chooser'"> -->
   <template>
-    <button class="dropbox-dropin-btn dropbox-dropin-default"><span class="dropin-btn-status"></span>Choose from Dropbox</button>
+      <button class="dropbox-dropin-btn dropbox-dropin-default" id="dropboxBtn">
+        <span class="dropin-btn-status"></span>
+        <template if="{{ buttonType === 'chooser' }}">
+          Choose from Dropbox
+        </template>
+
+        <template if="{{ buttonType === 'saver' }}">
+          Save to Dropbox
+        </template>
+      </button>
 
   <style>
     .dropbox-dropin-default:hover,
@@ -63,16 +71,46 @@
   <script>
     Polymer('dropbox-button', {
       appKey: '',
-      success: undefined,
-      cancel : undefined,
       linkType : 'preview',
       multiselect : false,
       extensions : undefined,
+      buttonType: 'choooser',
+      href: '',
+      fileName: '',
+      addEvent: function(type, cb, cap){
+        var el = this.$.dropboxBtn;
+
+        if(!type){
+          return;
+        }
+        el.impl.addEventListener(type, cb, cap);
+      },
       created: function(){
         this.onCreated();
       },
       onCreated: function(){
+        this.isChooser = this.buttonType === 'chooser';
         this.loadLib();
+        this.switchOpt();
+      },
+      switchOpt: function(){
+        var opt = '';
+        if(this.isChooser){
+          opt = {
+            linkType: this.linkType,
+            multiselect: this.multiselect,
+            extensions: this.extensions,
+            success: function(files){"Here's the file link:" + files[0].link},
+            cancel: function(e){console.log('cancel');}
+          };
+        }else{
+          opt = {
+            files: [{url: this.href, filename: this.fileName}],
+            success: function(files){console.log('success');},
+            cancel: function(e){console.log('cancel');}
+          };
+        }
+        this.opt = opt;
       },
       loadLib: function(){
         var d = document,
@@ -87,20 +125,12 @@
           d.body.appendChild(j);
         }
       },
-      createOpt: function(){
-        var opt = {
-          success: this.success,
-          cancel: this.cancel,
-          linkType: this.linkType,
-          multiselect: this.multiselect,
-          extensions: this.extensions
-        };
-        this.opt = opt;
-        return opt;
-      },
       onClick: function(){
-        var opt = this.opt || this.createOpt();
-        Dropbox.choose(opt);
+        if(this.isChooser){
+          Dropbox.choose(this.opt);
+        }else{
+          Dropbox.save(this.opt);
+        }
         return false;
       }
     });

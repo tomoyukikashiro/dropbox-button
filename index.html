@@ -21,9 +21,28 @@
     var chooser = document.querySelector('dropbox-button[buttonType=chooser]'),
         saver = document.querySelector('dropbox-button[buttonType=saver]');
 
+    // chooser
+    chooser.success = function(){
+      console.log('success');
+    };
+    chooser.cancel = function(){
+      console.log('cancel');
+    };
+
+    // saver
+    saver.success = function(){
+      console.log('success');
+    };
+    saver.progress = function(){
+      console.log('progress');
+    };
     saver.cancel = function(){
       console.log('cancel');
-    }
+    };
+    saver.error = function(){
+      console.log('error');
+    };
+
   });
   </script>
 </body>

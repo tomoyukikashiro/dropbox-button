@@ -73,7 +73,7 @@
       appKey: '',
       linkType : 'preview',
       multiselect : false,
-      extensions : undefined,
+      extensions : '',
       buttonType: 'choooser',
       href: '',
       fileName: '',
@@ -87,9 +87,8 @@
       onCreated: function(){
         this.isChooser = this.buttonType === 'chooser';
         this.loadLib();
-        this.switchOpt();
       },
-      switchOpt: function(){
+      getOptaaaaa: function(){
         var opt = '';
         if(this.isChooser){
           opt = {
@@ -100,7 +99,6 @@
             cancel: this.cancel
           };
         }else{
-          debugger;
           opt = {
             files: [{url: this.href, filename: this.fileName}],
             success: this.success,
@@ -109,7 +107,7 @@
             error: this.error
           };
         }
-        this.opt = opt;
+        return opt;
       },
       loadLib: function(){
         var d = document,
@@ -125,10 +123,11 @@
         }
       },
       onClick: function(){
+        var opt = this.getOptaaaaa();
         if(this.isChooser){
-          Dropbox.choose(this.opt);
+          Dropbox.choose(opt);
         }else{
-          Dropbox.save(this.opt);
+          Dropbox.save(opt);
         }
         return false;
       }

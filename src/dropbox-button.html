@@ -88,7 +88,7 @@
         this.isChooser = this.buttonType === 'chooser';
         this.loadLib();
       },
-      getOptaaaaa: function(){
+      getOpt: function(){
         var opt = '';
         if(this.isChooser){
           opt = {
@@ -123,7 +123,7 @@
         }
       },
       onClick: function(){
-        var opt = this.getOptaaaaa();
+        var opt = this.getOpt();
         if(this.isChooser){
           Dropbox.choose(opt);
         }else{

@@ -40,7 +40,7 @@ Depend on Polymer's [Browser Compatibility](http://www.polymer-project.org/compa
 
 ## Options
 
-coming soon!
+comming soon !
 
 more option [here](https://www.dropbox.com/developers/dropins)
 

@@ -73,44 +73,41 @@
       appKey: '',
       linkType : 'preview',
       multiselect : false,
-      extensions : undefined,
+      extensions : '',
       buttonType: 'choooser',
       href: '',
       fileName: '',
-      addEvent: function(type, cb, cap){
-        var el = this.$.dropboxBtn;
-
-        if(!type){
-          return;
-        }
-        el.impl.addEventListener(type, cb, cap);
-      },
+      success: function(){},
+      cancel: function(){},
+      progress: function(){},
+      error: function(){},
       created: function(){
         this.onCreated();
       },
       onCreated: function(){
         this.isChooser = this.buttonType === 'chooser';
         this.loadLib();
-        this.switchOpt();
       },
-      switchOpt: function(){
+      getOptaaaaa: function(){
         var opt = '';
         if(this.isChooser){
           opt = {
             linkType: this.linkType,
             multiselect: this.multiselect,
             extensions: this.extensions,
-            success: function(files){"Here's the file link:" + files[0].link},
-            cancel: function(e){console.log('cancel');}
+            success: this.success,
+            cancel: this.cancel
           };
         }else{
           opt = {
             files: [{url: this.href, filename: this.fileName}],
-            success: function(files){console.log('success');},
-            cancel: function(e){console.log('cancel');}
+            success: this.success,
+            cancel: this.cancel,
+            progress: this.progress,
+            error: this.error
           };
         }
-        this.opt = opt;
+        return opt;
       },
       loadLib: function(){
         var d = document,
@@ -126,10 +123,11 @@
         }
       },
       onClick: function(){
+        var opt = this.getOptaaaaa();
         if(this.isChooser){
-          Dropbox.choose(this.opt);
+          Dropbox.choose(opt);
         }else{
-          Dropbox.save(this.opt);
+          Dropbox.save(opt);
         }
         return false;
       }

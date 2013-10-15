@@ -40,7 +40,28 @@ Depend on Polymer's [Browser Compatibility](http://www.polymer-project.org/compa
 
 ## Options
 
-comming soon !
+### common reqired
+
+Attribute   | Options             | Default             | Description
+---         | ---                 | ---                 | ---
+`buttonType`| `chooser`, `saver`  | `chooser`           | [chooser](https://www.dropbox.com/developers/dropins/chooser/js), [saver](https://www.dropbox.com/developers/dropins/saver)
+`appKey`    |                     |                     | [app key](https://www.dropbox.com/developers/apps)
+
+### chooser required(*) or option
+
+Attribute    | Options            | Default             | Description
+---          | ---                | ---                 | ---
+`multiselect`|                    | 'false'             | If true then multiple files can be selected in the Chooser
+`linkType`   | 'preview','direct' | 'preview'           | See the [Link types](https://www.dropbox.com/developers/dropins/chooser/js#link-types) section below for more information.
+`extensions` |                    |                     | If specified, the user will only be able to select files with these extensions.
+
+### saver required(*) or option
+
+Attribute    | Options            | Default             | Description
+---          | ---                | ---                 | ---
+`href`(*)    |                    | 'false'             | identifies the url of the file the Saver should add to the user’s Dropbox
+`fileName`   |                    |                     | the user-friendly name of the file that should be saved to the user’s Dropbox can be included if desired.
+
 
 more option [here](https://www.dropbox.com/developers/dropins)
 

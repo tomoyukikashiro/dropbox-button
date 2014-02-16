@@ -1,0 +1,23 @@
+{
+  "name": "dropbox-button",
+  "version": "0.0.1",
+  "homepage": "https://github.com/kashiro/dropbox-button",
+  "authors": [
+    "kashiro"
+  ],
+  "description": "Web Component wrapper for dropbox Button using Polymer",
+  "main": "src/dropbox-button.html",
+  "keywords": [
+    "polymer",
+    "dropbox",
+    "web-components"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

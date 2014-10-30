@@ -1,3 +1,4 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
 <polymer-element name="dropbox-button" on-click="onClick" attributes="appKey fileName href buttonType linkType multiselect extensions">
 
   <template>
@@ -12,9 +13,7 @@
         </template>
       </button>
 
-  <style>
-  @host {
-    :scope {
+    <style>
       .dropbox-dropin-default:hover,
       .dropbox-dropin-error:hover{
         border-color: #dedede;
@@ -66,14 +65,12 @@
         position: relative;
         top: 2px;
       }
-    }
-  }
-  </style>
+    </style>
 
   </template>
 
   <script>
-    Polymer('dropbox-button', {
+    Polymer({
       appKey: '',
       linkType : 'preview',
       multiselect : false,
@@ -85,7 +82,7 @@
       cancel: function(){},
       progress: function(){},
       error: function(){},
-      created: function(){
+      ready: function(){
         this.onCreated();
       },
       onCreated: function(){
@@ -120,7 +117,7 @@
             w;
         if(!d.getElementById(i)){
           j.id=i;
-          j.src="https://www.dropbox.com/static/api/1/dropins.js";
+          j.src="https://www.dropbox.com/static/api/2/dropins.js";
           j.setAttribute('data-app-key', this.appKey);
           w = d.getElementById(i);
           d.body.appendChild(j);
